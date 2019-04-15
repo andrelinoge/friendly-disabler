@@ -9,9 +9,9 @@ Gem::Specification.new do |spec|
   spec.version     = Friendly::Disabler::VERSION
   spec.authors     = ["Andre Linoge"]
   spec.email       = ["andrelinoge87@gmail.com"]
-  spec.homepage    = "TODO"
-  spec.summary     = "TODO: Summary of Friendly::Disabler."
-  spec.description = "TODO: Description of Friendly::Disabler."
+  spec.homepage    = "https://github.com/andrelinoge/friendly-disabler"
+  spec.summary     = ""
+  spec.description = ""
   spec.license     = "MIT"
 
   # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'
