@@ -11,4 +11,5 @@ group :development, :test do
   gem 'byebug'
   gem 'pry'
   gem 'friendly_id', '~> 5.2.4'
+  gem 'request_store'
 end
