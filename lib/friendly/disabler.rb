@@ -3,31 +3,30 @@ require "friendly/disabler/version"
 
 module Friendly
   module Disabler
-    FD_THREAD_KEY = :__friendly_disabler_state
+    @@friendly_disabler_state = false
 
     class << self
 
       def friendly_id_disable!
-        RequestStore.store[FD_THREAD_KEY] = true
+        @@friendly_disabler_state = true
       end
 
       def friendly_id_enable!
-        RequestStore.store[FD_THREAD_KEY] = false
+        @@friendly_disabler_state = false
       end
 
       def friendly_id_disabled?
-        RequestStore.store[FD_THREAD_KEY] ||= false
-        !!RequestStore.store[FD_THREAD_KEY]
+        @@friendly_disabler_state
       end
 
       def disable_friendly_id(&block)
         begin
-          old_value = Thread.current[FD_THREAD_KEY]
-          RequestStore.store[FD_THREAD_KEY] = true
+          old_value = @@friendly_disabler_state
+          @@friendly_disabler_state = true
 
           block.call
         ensure
-          RequestStore.store[FD_THREAD_KEY] = old_value
+          @@friendly_disabler_state = old_value
         end
       end
     end

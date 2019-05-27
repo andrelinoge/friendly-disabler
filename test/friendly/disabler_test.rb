@@ -1,6 +1,10 @@
 require 'test_helper'
 
 class Friendly::Disabler::Test < ActiveSupport::TestCase
+  def setup
+    Friendly::Disabler::friendly_id_enable!
+  end
+
   test "truth" do
     assert_kind_of Module, Friendly::Disabler
   end
@@ -10,9 +14,6 @@ class Friendly::Disabler::Test < ActiveSupport::TestCase
 
     Friendly::Disabler::friendly_id_disable!
     assert_equal Friendly::Disabler::friendly_id_disabled?, true
-
-    Friendly::Disabler::friendly_id_enable!
-    assert_equal Friendly::Disabler::friendly_id_disabled?, false
   end
 
   test 'it return original id for models disabled' do
