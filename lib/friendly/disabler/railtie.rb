@@ -8,7 +8,6 @@ module Friendly
 
         if defined? FriendlyId::Model
           FriendlyId::Model.module_eval do
-            # keep original method
             alias :friendly_to_param :to_param
 
             def to_param
@@ -17,6 +16,13 @@ module Friendly
           end
         end
       end
+
+      ActiveSupport.on_load(:action_controller_base) do
+      end
+
+      ActiveSupport.on_load(:action_controller_api) do
+      end
+
     end
   end
 end
